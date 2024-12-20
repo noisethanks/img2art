@@ -199,7 +199,7 @@ def _convert_hl(rgb_data, bg_color):
         generated = [_generate_hl(rgb_data, i, j, bg_color) for j in range(w)]
         hl.extend([item[0] for item in generated if item[0]])
         code.append("{ %s }," % ("".join([item[1] for item in generated])))
-    code = "dashboard.section.header.opts.hl = {\n %s \n}" % ("\n".join(code))
+    code = "local header = {type='text', opts={position='center', hl = {\n %s \n}}, val ={" % ("\n".join(code))
     hl.append(code)
     return hl
 
@@ -325,6 +325,7 @@ def convert(
         if alpha:
             hl_data = _convert_hl(resized_rgb_data[0], bg_color)
             hl_data.extend(_convert_to_lua_fmt(raw[0]))
+            hl_data.append("}\n}\n\n return {header = header}")
             hl_data = [hl_data]
 
     print_converted(color_raw or raw, interval=interval, loop=loop)

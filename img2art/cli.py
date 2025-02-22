@@ -4,7 +4,8 @@ from typing import Callable, Optional, Tuple, TypeVar
 import typer
 from typing_extensions import Annotated
 
-from .utils import convert
+from utils import convert  # Direct import since they're in the same directory
+# from .utils import convert
 
 T = TypeVar("T")
 

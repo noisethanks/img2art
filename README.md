@@ -31,11 +31,26 @@ img2art xxx.png --scale 0.1 --threshold 120 --save-raw ./xxx.txt --alpha --quant
 
 ## Installation
 
-requirements: typer[all], opencv-python, numpy
+Shoutout to nxtkofi for the alpha-nvim export fix.
+You can check out his config here.
+https://github.com/nxtkofi/LightningNvim
+
+requirements: typer[all], opencv-python, numpy, poetry
+requirements-build: nuitka
 
 ```
 pip install img2art
 ```
+
+## Compile a C++ binary.
+
+For the sake of convenience, I've added a script that will generate a self-contained c++ binary from the python code compiled for your system architecture. You can use it like this:
+
+```
+chmod +x nuitka.sh
+./nuitka.sh
+```
+Resulting binary should be 60+ MB and be in the `dist` folder.
 
 ## Usage
 
